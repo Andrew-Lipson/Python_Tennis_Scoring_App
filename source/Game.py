@@ -5,7 +5,7 @@ import Variable
 def who_won_the_point():
     while True:
         try:
-            val = int(input("\nWho won the point:\n1. " + Variable.player1['Name'] + "\n2. " + Variable.player2['Name'] + "\n"))
+            val = int(input("\nWho won the point:\n1. " + Variable.player1['name'] + "\n2. " + Variable.player2['name'] + "\n"))
             if val == 1 or val == 2:
                 return val-1
             print("\nPlease enter either '1' or '2'. ")
@@ -18,9 +18,9 @@ def a_game():
     points_won = [0, 0]
     while True:
         points_won[who_won_the_point()] += 1
-        game_over, player = won_the_game(points_won)
+        game_over, player_number = won_the_game(points_won)
         if game_over:
-            return player
+            return player_number
         else:
             game_score = game_score_calculated(points_won)
             Scoreboard.scoreboard_print(game_score)

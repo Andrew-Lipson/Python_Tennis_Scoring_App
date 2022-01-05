@@ -15,9 +15,9 @@ def scoreboard_print(game_scores):
 
 def set_scoreboard2(player):
     output = ""
-    output += player_name_board[player['number']-1]
-    for x in player['score']:
-        output += str(x)
+    output += player_name_board[player['number']]
+    for x in Variable.scores:
+        output += str(x[player['number']])
         output += "|"
     return output
 
@@ -27,16 +27,16 @@ def set_scoreboard():
 
 
 def create_name_board(player, length):
-    output = "|" + player['Name']
-    for x in range(length - len(player['Name'])):
+    output = "|" + player['name']
+    for x in range(length - len(player['name'])):
         output += " "
     output += "|"
-    player_name_board[player['number'] - 1] = output
+    player_name_board[player['number']] = output
 
 
 def initialise_scoreboard():
-    p1_name = Variable.player1['Name']
-    p2_name = Variable.player1['Name']
+    p1_name = Variable.player1['name']
+    p2_name = Variable.player1['name']
 
     if len(p1_name) > len(p2_name):
         length = len(p1_name)
