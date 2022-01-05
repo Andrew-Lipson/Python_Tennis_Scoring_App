@@ -1,11 +1,15 @@
 import Scoreboard
+import Game
+
 
 def player_names():
     player1['Name'] = input("Player 1's name: ")
     player2['Name'] = input("Player 2's name: ")
+    Game.player1_name = player1['Name']
+    Game.player2_name = player2['Name']
 
 
-def start_match():
+def initialise_match():
     player_names()
     while True:
         try:
@@ -19,25 +23,13 @@ def start_match():
             print("\nPlease enter either '1', '3' or '5'. ")
 
 
-def user_input():
-    while True:
-        try:
-            val = int(input("\nWho won the point:\n1. " + player1['Name'] + "\n2. " + player2['Name'] + "\n"))
-            if val == 1 or val == 2:
-                return val
-            print("\nPlease enter either '1' or '2'. ")
-        except ValueError:
-            print("\nPlease enter either '1' or '2'. ")
+def start_match():
+    set_scoreboard = Scoreboard.scoreboard_main(player1, player2)
+    Game.a_game(set_scoreboard)
 
 
 player1 = {'Name': "", 'score': []}
 player2 = {'Name': "", 'score': []}
 
-number_of_sets = start_match()
-set_scoreboard = Scoreboard.scoreboard_main(player1, player2)
-game_score = [str(15), str(30)]
-Scoreboard.scoreboard_print(set_scoreboard, game_score)
-game_score = [str(30), str(30)]
-Scoreboard.scoreboard_print(set_scoreboard, game_score)
-game_score = [str(40), str(30)]
-Scoreboard.scoreboard_print(set_scoreboard, game_score)
+number_of_sets = initialise_match()
+start_match()
