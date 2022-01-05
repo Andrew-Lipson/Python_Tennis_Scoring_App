@@ -1,14 +1,11 @@
 import Scoreboard
-
-
-global player1_name
-global player2_name
+import Variable
 
 
 def who_won_the_point():
     while True:
         try:
-            val = int(input("\nWho won the point:\n1. " + player1_name + "\n2. " + player2_name + "\n"))
+            val = int(input("\nWho won the point:\n1. " + Variable.player1['Name'] + "\n2. " + Variable.player2['Name'] + "\n"))
             if val == 1 or val == 2:
                 return val-1
             print("\nPlease enter either '1' or '2'. ")
@@ -16,8 +13,8 @@ def who_won_the_point():
             print("\nPlease enter either '1' or '2'. ")
 
 
-def a_game(set_scoreboard):
-    Scoreboard.scoreboard_print(set_scoreboard, ["", ""])
+def a_game():
+    Scoreboard.scoreboard_print(["", ""])
     points_won = [0, 0]
     while True:
         points_won[who_won_the_point()] += 1
@@ -26,7 +23,7 @@ def a_game(set_scoreboard):
             return player
         else:
             game_score = game_score_calculated(points_won)
-            Scoreboard.scoreboard_print(set_scoreboard, game_score)
+            Scoreboard.scoreboard_print(game_score)
 
 
 def won_the_game(points_won):

@@ -1,13 +1,11 @@
 import Scoreboard
 import Game
+import Variable
 
 
 def player_names():
-    player1['Name'] = input("Player 1's name: ")
-    player2['Name'] = input("Player 2's name: ")
-    Game.player1_name = player1['Name']
-    Game.player2_name = player2['Name']
-
+    Variable.player1['Name'] = input("Player 1's name: ")
+    Variable.player2['Name'] = input("Player 2's name: ")
 
 def initialise_match():
     player_names()
@@ -15,8 +13,8 @@ def initialise_match():
         try:
             val = int(input("\nHow many sets(1,3,5): "))
             if val == 1 or val == 3 or val == 5:
-                player1['score'].append(0)
-                player2['score'].append(0)
+                Variable.player1['score'].append(0)
+                Variable.player2['score'].append(0)
                 return val
             print("\nPlease enter either '1', '3' or '5'. ")
         except ValueError:
@@ -24,12 +22,10 @@ def initialise_match():
 
 
 def start_match():
-    set_scoreboard = Scoreboard.scoreboard_main(player1, player2)
-    Game.a_game(set_scoreboard)
+    Scoreboard.initialise_scoreboard()
+    Scoreboard.set_scoreboard()
+    Game.a_game()
 
-
-player1 = {'Name': "", 'score': []}
-player2 = {'Name': "", 'score': []}
 
 number_of_sets = initialise_match()
 start_match()
