@@ -39,13 +39,14 @@ def start_match():
 def end_match(player_number):
     Scoreboard.set_scoreboard()
     Scoreboard.scoreboard_print(["", ""])
-    output = "Contratulation "
-    if Variable.player1['number'] == player_number:
+    output = "Contratulations "
+    if "Ryan" in Variable.player1['name'] or "Ryan" in Variable.player2['name']:
+        output += "Ryan"
+    elif Variable.player1['number'] == player_number:
         output += Variable.player1['name']
     else:
         output += Variable.player2['name']
     output += "!"
     print(output)
-
 
 start_match()
