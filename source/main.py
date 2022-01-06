@@ -27,7 +27,7 @@ def start_match():
     number_of_sets = initialise_match()
     Scoreboard.initialise_scoreboard()
     target = math.ceil(number_of_sets / 2)
-    sets_won = [0,0]
+    sets_won = [0, 0]
     for x in range(number_of_sets):
         player_number = Set.a_set(x)
         sets_won[player_number] += 1
@@ -39,7 +39,7 @@ def start_match():
 def end_match(player_number):
     Scoreboard.set_scoreboard()
     Scoreboard.scoreboard_print(["", ""])
-    output = "Contratulation "
+    output = "Congratulation "
     if Variable.player1['number'] == player_number:
         output += Variable.player1['name']
     else:
