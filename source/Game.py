@@ -56,3 +56,23 @@ def game_score_calculated(points_won):
             game_score = ["40", "40"]
 
     return game_score
+
+def tiebreaker():
+    Scoreboard.scoreboard_print(["", ""])
+    points_won = [0, 0]
+    while True:
+        points_won[who_won_the_point()] += 1
+        game_over, player_number = won_tiebreaker(points_won)
+        if game_over:
+            return player_number
+        else:
+            Scoreboard.scoreboard_print([str(points_won[0]), str(points_won[1])])
+
+
+def won_tiebreaker(points_won):
+    for x in range(2):
+        y = (x+1) % 2
+        if points_won[x] > 6:
+            if (points_won[x]-points_won[y]) > 1:
+                return True, x
+    return False, 0
