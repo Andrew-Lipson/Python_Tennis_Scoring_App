@@ -1,6 +1,7 @@
 import Scoreboard
 import Variable
 import Set
+import math
 
 
 def player_names():
@@ -23,9 +24,28 @@ def initialise_match():
 
 
 def start_match():
+    number_of_sets = initialise_match()
     Scoreboard.initialise_scoreboard()
-    Set.a_set(1-1)
+    target = math.ceil(number_of_sets / 2)
+    sets_won = [0,0]
+    for x in range(number_of_sets):
+        player_number = Set.a_set(x)
+        sets_won[player_number] += 1
+        if sets_won[player_number] == target:
+            end_match(player_number)
+            return
 
 
-number_of_sets = initialise_match()
+def end_match(player_number):
+    Scoreboard.set_scoreboard()
+    Scoreboard.scoreboard_print(["", ""])
+    output = "Contratulation "
+    if Variable.player1['number'] == player_number:
+        output += Variable.player1['name']
+    else:
+        output += Variable.player2['name']
+    output += "!"
+    print(output)
+
+
 start_match()

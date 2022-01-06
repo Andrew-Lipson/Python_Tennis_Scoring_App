@@ -8,8 +8,9 @@ def a_set(set_number):
         Scoreboard.set_scoreboard()
         if sum(Variable.scores[set_number]) == 12:
             print("tiebreaker")
-            return Game.tiebreaker()
-        player_number = Game.a_game()
+            player_number = Game.tiebreaker()
+        else:
+            player_number = Game.a_game()
         Variable.scores[set_number][player_number] += 1
         if won_the_set(set_number, player_number):
             return player_number
