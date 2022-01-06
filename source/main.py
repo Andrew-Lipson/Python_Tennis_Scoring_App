@@ -24,7 +24,7 @@ def initialise_match():
 
 def start_match():
     Scoreboard.initialise_scoreboard()
-    Set.a_set(1)
+    Set.a_set(1-1)
 
 
 number_of_sets = initialise_match()
